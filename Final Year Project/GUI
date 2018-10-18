@@ -1,0 +1,22 @@
+from Tkinter import *
+
+window = Tk()
+window.geometry("300x300")
+window.title("Intrusion Detection - Pink Panther!")
+
+#invisible containers
+top_frame = Frame(window)
+top_frame.pack()
+bottom_frame = Frame(window)
+bottom_frame.pack(side = BOTTOM)
+
+#buttons
+button1 = Button(top_frame, text = "Track File", fg = "blue", bg = "red")
+button1.pack(side=LEFT)
+button2 = Button(bottom_frame, text = "Run Checks", fg = "green")
+button2.pack(side = LEFT)
+button3 = Button(bottom_frame, text = "Run Checks", fg = "green")
+button3.pack(side = LEFT)
+
+#Keeps the window running until closed
+window.mainloop()
