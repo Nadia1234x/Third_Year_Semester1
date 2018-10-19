@@ -3,91 +3,42 @@ import mysql.connector
 import smtplib
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
+from apscheduler.schedulers.blocking import BlockingScheduler
 import schedule
 import time
 import hashlib
 import sys
 from subprocess import Popen, PIPE
+import database
+import email_alert
+import check_fileExistence
 
 
-
-command = os.popen('arp -a')
-print command.read() 
-command.close() 
-
-
-def insert_into_db(SQL_INSERT, hids_database):
-    cursor=hids_database.cursor()
-    cursor.execute("INSERT INTO file_checksum VALUES(3,1);")
-    hids_database.commit()
-    cursor.close()
     
-#Adds file into the db for the first time. 
-def track_file_initialisation(path_name, db):
-    hash_object = hashlib.md5(path_name.encode())
-    print(hash_object.hexdigest())
-    hash_value = str(hash_object.hexdigest())
-    print type(hash_value)
-    query = "INSERT INTO file_checksum VALUES(hh,1);"
-    print query
-    insert_into_db(query , db)
-    
-
-def initialise_db():
-    hids_database = mysql.connector.connect(user='root', password='Narnia0102',host='localhost',database='HIDS')
-    return hids_database
-   
-
-track_file = int(raw_input("do you wanto to track a file? Yes = 1, No = 0"))
+track_file = int(raw_input("do you want to to track a file? Yes = 1, No = 0"))
 if(track_file == 1):
     path_name = raw_input("Please enter the absolute pathname of the file")
-    db = initialise_db()
-    track_file_initialisation(path_name, db);
+    db = database.initialise_db()
+    database.track_file_initialisation(path_name, db);
 
 INSERT = int(raw_input("do you want to insert into the database? Yes = 1, No = 0 ")) 
 if(INSERT == 1): 
      SQL_INSERT (raw_input("please enter in the sql INSERT command"))
      insert_db()
 
-    
-def select_from_db(hids_database):
-    cursor=hids_database.cursor()
-    cursor.execute ("SELECT * FROM file_checksum;")
-    row = cursor.fetchone ()
-    print "File:", row[0], "Checksum:", row[1]
-    cursor.close()
-    
-
-def send_alert(line):
-    fromaddr = "nadianoormohamed96@gmail.com"
-    toaddr = "nadianoormohamed96@gmail.com"
-    msg = MIMEMultipart()
-    msg['From'] = "nadianoormohamed96@gmail.com"
-    msg['To'] = "nadianoormohamed96@gmail.com"
-    msg['Subject'] = "Your file", line, "has been deleted"
-    body = "Security alert: your file has been deleted"
-    msg.attach(MIMEText(body, 'plain'))
-
-    server = smtplib.SMTP_SSL('smtp.gmail.com:465')
-    #server.starttls()
-    server.login("nadianoormohamed96@gmail.com", "Narnia0102199604")
-
-    text = msg.as_string()
-    server.sendmail("nadianoormohamed96@gmail.com", "nadianoormohamed96@gmail.com", text)
-    server.quit()
-
-
-def check_file_existence():
+def last_accessed():
     with open("tracked_file.txt") as file:
-            for line in file:
-                #removing the white space after the line. 
-                line = line.strip()
-                result = os.path.isfile(line)
-                if(result != True):
-                    send_alert(line)
-                else:
-                    print "The file does exist!"
+        for line in file:
+            line = line.strip()
+            print time.ctime(os.stat(line).st_atime)
 
-#check_file_existence()
-#db = initialise_db()
-#select_from_db(db)
+#everytime the file is accessed, write this to the corresponding stat
+#file, calculate the average and compare to the other average access per day 
+#file.
+
+check_fileExistence.check_file_existence()
+db = database.initialise_db()
+database.select_from_db(db)
+scheduler = BlockingScheduler()
+scheduler.add_job(some_job, 'interval', hours=1)
+scheduler.start()
