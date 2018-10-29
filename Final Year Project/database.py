@@ -9,6 +9,7 @@ import hashlib
 import sys
 from subprocess import Popen, PIPE
 
+
 username = raw_input('Please enter your username:')
 password = raw_input('Please enter your password:')
 
