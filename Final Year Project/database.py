@@ -9,8 +9,12 @@ import hashlib
 import sys
 from subprocess import Popen, PIPE
 
-def initialise_db():
-    hids_database = mysql.connector.connect(user='root', password='Narnia0102',host='localhost',database='HIDS')
+username = raw_input('Please enter your username:')
+password = raw_input('Please enter your password:')
+
+def initialise_db(username, password):
+    hids_database = mysql.connector.connect(user=username, password=password
+    ,host='localhost',database='HIDS')
     return hids_database
     
 #Adds file into the db for the first time. 
@@ -19,7 +23,7 @@ def track_file_initialisation(path_name, db):
     print(hash_object.hexdigest())
     hash_value = str(hash_object.hexdigest())
     print type(hash_value)
-    query = "INSERT INTO file_checksum VALUES(hh,1);"
+    query = "INSERT INTO file_checksum VALUES('" + hash_value + "', 1);"
     print query
     insert_into_db(query , db)
     
@@ -32,6 +36,6 @@ def select_from_db(hids_database):
     
 def insert_into_db(SQL_INSERT, hids_database):
     cursor=hids_database.cursor()
-    cursor.execute("INSERT INTO file_checksum VALUES(3,1);")
+    cursor.execute(SQL_INSERT)
     hids_database.commit()
     cursor.close()

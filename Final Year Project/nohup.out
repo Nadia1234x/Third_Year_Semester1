@@ -1,58 +1,50 @@
-/System/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python: can't open file 'MyScheduledProgram.py': [Errno 2] No such file or directory
-Traceback (most recent call last):
-  File "Intrusion_detection", line 44, in <module>
-    time.sleep(60) # wait one minute
-KeyboardInterrupt
-Traceback (most recent call last):
-  File "Intrusion_detection", line 44, in <module>
-    
-KeyboardInterrupt
-Traceback (most recent call last):
-  File "Intrusion_detection", line 43, in <module>
-    time.sleep(60) # wait one minute
-KeyboardInterrupt
-Traceback (most recent call last):
-  File "Intrusion_detection", line 39, in <module>
-    schedule.every().day.at("23:09").do(check_file_existence(),'It is 01:00')
-  File "/Library/Python/2.7/site-packages/schedule/__init__.py", line 385, in do
-    self.job_func = functools.partial(job_func, *args, **kwargs)
-TypeError: the first argument must be callable
-Traceback (most recent call last):
-  File "Intrusion_detection", line 39, in <module>
-    schedule.every().day.at("23:11").do(check_file_existence(),'It is 01:00')
-  File "/Library/Python/2.7/site-packages/schedule/__init__.py", line 385, in do
-    self.job_func = functools.partial(job_func, *args, **kwargs)
-TypeError: the first argument must be callable
-Traceback (most recent call last):
-  File "Intrusion_detection", line 43, in <module>
-    
-  File "/Library/Python/2.7/site-packages/schedule/__init__.py", line 493, in run_pending
-    default_scheduler.run_pending()
-  File "/Library/Python/2.7/site-packages/schedule/__init__.py", line 78, in run_pending
-    self._run_job(job)
-  File "/Library/Python/2.7/site-packages/schedule/__init__.py", line 131, in _run_job
-    ret = job.run()
-  File "/Library/Python/2.7/site-packages/schedule/__init__.py", line 411, in run
-    ret = self.job_func()
-TypeError: check_file_existence() takes no arguments (1 given)
-nohup: Intrusion_detection: No such file or directory
-Traceback (most recent call last):
-  File "Intrusion_detection", line 6, in <module>
-    from apscheduler.schedulers.blocking import BlockingScheduler
-ImportError: No module named apscheduler.schedulers.blocking
-Traceback (most recent call last):
-  File "Intrusion_detection", line 6, in <module>
-    from apscheduler.schedulers.blocking import BlockingScheduler
-ImportError: No module named apscheduler.schedulers.blocking
-Traceback (most recent call last):
-  File "Intrusion_detection", line 6, in <module>
-    from apscheduler.schedulers.blocking import BlockingScheduler
-ImportError: No module named apscheduler.schedulers.blocking
-Traceback (most recent call last):
-  File "Intrusion_detection", line 6, in <module>
-    from apscheduler.schedulers.blocking import BlockingScheduler
-ImportError: No module named apscheduler.schedulers.blocking
-Traceback (most recent call last):
-  File "Intrusion_detection", line 6, in <module>
-    from apscheduler.schedulers.blocking import BlockingScheduler
-ImportError: No module named apscheduler.schedulers.blocking
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+File: 1 Checksum: 2
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+File: 1 Checksum: 2
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+File: 1 Checksum: 2
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+File: 1 Checksum: 2
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+The file does exist!
+File: 1 Checksum: 2
