@@ -1,0 +1,66 @@
+from Tkinter import *
+import tkFileDialog as filedialog
+import tkFont 
+
+#class LoginPage(self)
+#    def __init__(self)
+
+#
+    
+#main window
+window = Tk()
+window.geometry("350x125")
+window.title("Intrusion Detection - Pink Panther!")
+window.configure(background = "SteelBlue1")
+c = Checkbutton(window, text="Are you the admin?")
+c.configure(background = "SteelBlue1")
+c.grid(column = 1)
+
+
+file_path = StringVar()
+add_path_label = Label(window, text="Add path: ")
+entry_path = Entry(window, textvariable = file_path)
+entry_path.grid(row = 1, column = 1)
+add_path_label.grid(row = 1, column = 0)
+add_path_label.configure(background = "SteelBlue1")
+label_or = Label(window, text="or")
+label_or.grid(row = 2, column = 1)
+label_or.configure(background = "SteelBlue1")
+
+def filePath(event):
+    print file_path.get()
+ 
+
+def open_file(event):
+    fileName = filedialog.askopenfilename()
+    print fileName
+
+button_add_file = Button(window, text = "Browse")
+button_add_file.bind("<Button-1>", open_file)
+button_add_file.grid(row = 3, column = 1)
+
+button_add_path = Button(window, text = "add path")
+button_add_path.bind("<Button-1>", filePath)
+button_add_path.grid(row = 1, column = 3)
+button_add_path.configure(background = "SteelBlue1")
+
+
+#Keeps the window running until closed
+window.mainloop()
+
+#--------------------------------------------------------------------
+#dynamic label:
+#label_1 = Label(top_frame, text="label_1", bg = "red", fg="white")
+#label_1.pack(side=LEFT)
+
+#invisible containers
+#top frame
+#top_frame = Frame(window)
+#pack means pack in the first place you can
+#top_frame.pack()
+#bottom frame
+#bottom_frame = Frame(window)
+#bottom_frame.pack(side = BOTTOM)
+
+#def__init__(self, master) gets called automatically when you create an object
+#master means the root or main window. 
