@@ -9,23 +9,23 @@ import tkFont
     
 #main window
 window = Tk()
-window.geometry("350x125")
+window.geometry("800x500")
 window.title("Intrusion Detection - Pink Panther!")
-window.configure(background = "SteelBlue1")
+window.configure(background = "Blue")
 c = Checkbutton(window, text="Are you the admin?")
-c.configure(background = "SteelBlue1")
-c.grid(column = 1)
+c.configure(background = "Blue", fg = 'White')
+c.grid(column = 4)
 
 
 file_path = StringVar()
-add_path_label = Label(window, text="Add path: ")
+add_path_label = Label(window, text="Add path: ", fg = 'White')
 entry_path = Entry(window, textvariable = file_path)
-entry_path.grid(row = 1, column = 1)
-add_path_label.grid(row = 1, column = 0)
-add_path_label.configure(background = "SteelBlue1")
-label_or = Label(window, text="or")
-label_or.grid(row = 2, column = 1)
-label_or.configure(background = "SteelBlue1")
+entry_path.grid(row = 8, column = 6)
+add_path_label.grid(row = 5, column = 5)
+add_path_label.configure(background = "Blue")
+label_or = Label(window, text="or", fg = 'White')
+label_or.grid(row = 9, column = 6)
+label_or.configure(background = "Blue")
 
 def filePath(event):
     print file_path.get()
@@ -37,11 +37,11 @@ def open_file(event):
 
 button_add_file = Button(window, text = "Browse")
 button_add_file.bind("<Button-1>", open_file)
-button_add_file.grid(row = 3, column = 1)
+button_add_file.grid(row = 10, column = 6)
 
 button_add_path = Button(window, text = "add path")
 button_add_path.bind("<Button-1>", filePath)
-button_add_path.grid(row = 1, column = 3)
+button_add_path.grid(row = 8, column = 7)
 button_add_path.configure(background = "SteelBlue1")
 
 
