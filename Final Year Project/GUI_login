@@ -45,7 +45,6 @@ button_add_file.grid(row = 7)
 #Keeps the window running until closed
 window.mainloop()
 
-#--------------------------------------------------------------------
 #dynamic label:
 #label_1 = Label(top_frame, text="label_1", bg = "red", fg="white")
 #label_1.pack(side=LEFT)
